@@ -88,10 +88,19 @@ const updateCustomer = (req, res) => {
   res.json(editedCustomer);
 };
 
+const deleteAllCustomers = () => {
+  db.query("DELETE FROM customers", (err, res) => {
+    if (err) {
+      return console.error("Error executing query", err.stack);
+    }
+  });
+};
+
 module.exports = {
   getAllCustomers: getAllCustomers,
   getCustomerById: getCustomerById,
   addCustomer: addCustomer,
   deleteCustomer: deleteCustomer,
   updateCustomer: updateCustomer,
+  deleteAllCustomers: deleteAllCustomers,
 };
